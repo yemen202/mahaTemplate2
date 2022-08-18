@@ -1,0 +1,158 @@
+/* Common */
+.m-t-20 { margin-top: 20px; }
+.m-t-5 { margin-top: 5px; }
+.m-l-5 { margin-left: 5px; }
+.p-t-10 { padding-top: 10px; }
+.p-t-20 { padding-top: 20px; }
+.p-b-20 { padding-bottom: 20px; }
+.p-r-12 { padding-right: 12px; }
+.fs-16 { font-size: 16px; }
+.fs-14 { font-size: 14px; }
+.font-weight-500 { font-weight: 500; }
+.border-b { border-bottom: 1px solid #f0f1f3; }
+.border-t { border-top: 1px solid #f0f1f3; }
+.pointer { cursor: pointer; }
+.text-black { color: @text-black !important; }
+.text-gray { color: @gray !important; }
+
+/* Override */
+.text-warning { color: #ffc107 !important; }
+.text-success { color: #28a745 !important; }
+.text-danger { color: #dc3545 !important; }
+
+/*  */
+.download-pdf .fa-spinner, .download-pdf.active .fa-file-pdf-o { display: none; }
+.download-pdf.active .fa-spinner { display: block; }
+
+.edit-mode a.edit-limit, .edit-mode a.edit-charge, .edit-mode .text-limit-value, .edit-delivery-linit-box, .edit-mode a.edit-reg-fee { display: none; }
+.edit-mode .edit-delivery-linit-box { display: block; }
+
+.card .card-header .card-title { max-width: 90%; margin-bottom: 15px; }
+.form-control::-webkit-input-placeholder { color: @gray; opacity: 1; }
+
+/* toastr */
+.toast.toast-success { background-color: @primary; }
+
+/* Loading */
+.loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 111;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading .fa {
+  position: absolute;
+  color: #000000;
+}
+
+.modal .loading, .loading.page-loading { display: none; }
+.modal.process .loading, body.process .loading.page-loading { display: flex; }
+
+.footable .loading, .mt-content .loading { position: relative; background: transparent; min-height: 150px; }
+
+/* Modal - Right */
+.modal-backdrop.show { opacity: 0.6; }
+.modal.fade.slide-right .close { right: 0px; background-color: #f1f5fa; color: #6470a0; opacity: 1; margin: 0px; }
+.modal.fade.slide-right .close:hover { background-color: #e5eaef; }
+.modal-open .modal.fade.slide-right .modal-dialog, .modal.fade.slide-right.show .modal-dialog {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-ms-transform: translate(0, 0);
+}
+.modal.fade.slide-right .modal-dialog {
+	position: absolute;
+	right: 0;
+	margin: 0;
+	height: 100%;
+	-webkit-transform: translate3d(100%, 0, 0);
+	transform: translate3d(100%, 0, 0);
+	-ms-transform: translate(100%, 0);
+}
+.modal.fade.slide-right .modal-dialog .modal-content-wrapper { height: 100%; }
+.modal.fade.slide-right .modal-dialog .modal-content { height: 100%; }
+.modal.fade.slide-right .modal-dialog .modal-body { background-color: #ffffff; }
+.modal.fade.slide-right .modal-content { border-radius: 0px; border: none; }
+@media (min-width: 992px) {
+  .modal-md { width: 700px; }
+}
+@media (min-width: 576px) {
+  .modal-dialog { max-width: 500px; width: 100%; }
+}
+@media (max-width: 767px) {
+  .modal-body { padding: 30px 15px 5px !important; }
+}
+@media (max-width: 575px) {
+  .modal.fade.slide-right .modal-dialog { left: 0; }
+}
+/* End Modal - Right */
+
+// animation
+/* slide-right Animation */
+.slide-right {
+  animation-name: slideInRight;
+  -webkit-animation-name: slideInRight;
+  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  visibility: visible !important
+}
+
+@-webkit-keyframes slideInRight{
+  0% {
+    -webkit-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+    visibility:visible
+  } to {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+  }
+}
+@keyframes slideInRight{
+  0% {
+    -webkit-transform:translate3d(100%,0,0);
+    transform:translate3d(100%,0,0);
+    visibility:visible
+  } to {
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0)
+  }
+}
+
+/* pull down animation */
+.pullDown {
+    animation-name: pullDown;
+    -webkit-animation-name: pullDown;
+    animation-duration: 1.1s;
+    -webkit-animation-duration: 1.1s;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+    transform-origin: 50% 0%;
+    -ms-transform-origin: 50% 0%;
+    -webkit-transform-origin: 50% 0%;
+}
+
+@keyframes pullDown {
+  0% { transform:scaleY(0.1) }
+  40% { transform:scaleY(1.02) }
+  60% { transform:scaleY(0.98) }
+  80% { transform:scaleY(1.01) }
+  100% { transform:scaleY(0.98) }
+  80% { transform:scaleY(1.01) }
+  100% { transform:scaleY(1) }
+}
+
+@-webkit-keyframes pullDown {
+  0% { -webkit-transform:scaleY(0.1) }
+  40% { -webkit-transform:scaleY(1.02) }
+  60% {-webkit-transform:scaleY(0.98) }
+  80% {-webkit-transform:scaleY(1.01) }
+  100% { -webkit-transform:scaleY(0.98) }
+  80% { -webkit-transform:scaleY(1.01) }
+  100% { -webkit-transform:scaleY(1) }
+}

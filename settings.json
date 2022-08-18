@@ -1,0 +1,26 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://joodxmeteor:W5Zjbg4JczPDoAiZo@SG-galaxycluster-38726.servers.mongodirector.com:27017,SG-galaxycluster-38727.servers.mongodirector.com:27017/mytestappmaha-meteorapp-com?replic\naSet=RS-galaxycluster-0&ssl=true"
+    }
+  },
+  "public": {
+    "uploadType": "fileSystem"
+  },
+  "aws": {
+    "accessKeyId": "",
+    "secretAccessKey": ""
+  },
+  "awsS3": {
+    "region": "",
+    "bucket": ""
+  },
+  "stripe": {
+    "secretKey": ""
+  },
+  "paypal": {
+    "apiUrl": "https://api.sandbox.paypal.com",
+    "accessKeyId": "",
+    "secretAccessKey": ""
+  }
+}

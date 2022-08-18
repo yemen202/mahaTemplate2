@@ -1,0 +1,20 @@
+<template name="terms">
+  <section class="content-header">
+    <h1>Terms & Conditions</h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li class="active">Terms & Conditions</li>
+    </ol>
+  </section>
+  <div class="content table-wrapper">
+    <div class="card">
+      <div class="card-header">
+        <button id="btnAddEditTerms" class="btn btn-primary action-button pull-right"><i class="fa {{#if isAdd }} fa-plus {{else}} fa-pencil {{/if}}"></i> {{#if isAdd }} Add {{else}} Edit {{/if}}</button>
+      </div>
+      <div class="card-body {{ #if terms }} p-3 {{/if}}">
+        {{ terms }}
+      </div>
+    </div>
+  </div>
+  {{> termsAddEditModal}}
+</template>

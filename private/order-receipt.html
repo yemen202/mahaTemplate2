@@ -1,0 +1,77 @@
+<div class="container">
+  {{#with order}}
+    <div class="card-body">
+      <div class=""><label>&nbsp;</label></div>
+      <div class="text-right" style="margin-bottom: 15px;">
+        {{createdAt}}
+      </div>
+      <div class="form-group">
+        <div class="clearfix">
+          <label style="margin-bottom: 0px;">Name:</label>
+          <div class="m-l-20">{{user.profile.name}} ( {{email}} )</div>
+        </div>
+        {{#if deliveryAddress}}
+          <div class="clearfix">
+            <label style="margin-top: 15px; margin-bottom: 0px;">Delivery Address:</label>
+            <div class="m-l-20">
+              {{#if deliveryAddress.firstName}} {{deliveryAddress.firstName}}{{/if}}
+              {{#if deliveryAddress.lastName}} {{deliveryAddress.lastName}}{{/if}}
+              <br />
+              {{#if deliveryAddress.address}} {{deliveryAddress.address}}{{/if}}
+              {{#if deliveryAddress.area}} , {{deliveryAddress.area}}{{/if}}
+              {{#if deliveryAddress.city}} , {{deliveryAddress.city}}{{/if}}
+              {{#if deliveryAddress.pincode}} - {{deliveryAddress.pincode}}{{/if}}
+              {{#if deliveryAddress.country}} , {{deliveryAddress.country}}{{/if}}
+              <br />
+              {{#if deliveryAddress.mobile}}{{deliveryAddress.mobile}}{{/if}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+      <table class="table" id="orderProducts">
+        <thead>
+          <tr>
+            <th align="left">Product</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Quantity</th>
+            <th class="text-right">Discount</th>
+            <th class="text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each products}}
+            <tr>
+              <td><p class="product-name">{{productName}}</p></td>
+              <td align="right"><p>${{price}}</p></td>
+              <td align="right"><p>{{quantity}}</p></td>
+              <td align="right"><p>${{discount}}</p></td>
+              <td align="right"><p>${{sellPrice}}</p></td>
+            </tr>
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <!-- <td colspan="2" align="right">{{#if totalDiscount}}${{totalDiscount}}{{/if}}</td> -->
+            <td colspan="4" align="right">${{subTotal}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="3" align="right">Delivery Charge</td>
+            <td align="right">${{deliveryCharge}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="3" align="right">Total Price</td>
+            <td align="right"><strong>${{totalPrice}}</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+      {{#if totalDiscount}}
+        <div class="text-right m-t-10">
+          <div class="d-block" style="color: rgba(245, 87, 83, 1);">You saved ${{totalDiscount}}</div>
+        </div>
+      {{/if}}
+    </div>
+  {{/with}}
+</div>

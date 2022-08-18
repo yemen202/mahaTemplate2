@@ -1,0 +1,32 @@
+//Collections
+import '/imports/api/users/collection.js'
+import '/imports/api/categories/collection.js'
+import '/imports/api/products/collection.js'
+import '/imports/api/options/collection.js'
+import '/imports/api/optionValues/collection.js'
+import '/imports/api/banners/collection.js'
+import '/imports/api/carts/collection.js'
+import '/imports/api/orders/collection.js'
+import '/imports/api/addresses/collection.js'
+import '/imports/api/notifications/collection.js'
+
+// Methods
+import '/imports/api/users/methods.js'
+import '/imports/api/categories/methods.js'
+import '/imports/api/products/methods.js'
+import '/imports/api/options/methods.js'
+import '/imports/api/banners/methods.js'
+import '/imports/api/orders/methods.js'
+import '/imports/api/settings/methods.js'
+import '/imports/api/notifications/methods.js'
+
+// Publication
+import '/imports/api/users/publication.js'
+import '/imports/api/categories/publication.js'
+import '/imports/api/products/publication.js'
+import '/imports/api/options/publication.js'
+import '/imports/api/optionValues/publication.js'
+import '/imports/api/banners/publication.js'
+import '/imports/api/orders/publication.js'
+import '/imports/api/settings/publication.js'
+import '/imports/api/notifications/publication.js'

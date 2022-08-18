@@ -1,0 +1,14 @@
+<template name="mainLayout">
+  {{#if userId}}
+    <div class="wrapper">
+      {{> header}}
+
+      {{> sidebar}}
+      <div class="content-wrapper">
+        {{> Template.dynamic template=main}}
+      </div>
+    </div>
+  {{else}}
+    {{goToLoginPage}}
+  {{/if}}
+</template>

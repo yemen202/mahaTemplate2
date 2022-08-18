@@ -1,0 +1,25 @@
+<template name="notificationAddEditModal">
+  <div class="modal fade slide-right action-modal" id="notificationAddEditModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content-wrapper">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form role="form" id="notificationForm">
+              {{#with item}}
+                <div class="form-group">
+                  <label>Message</label>
+                  <span class="help"></span>
+                  <input type="text" name="message" class="form-control" placeholder="Enter message" value="{{message}}" required>
+                </div>
+                <div class="form-group p-t-10 d-flex justify-content-end">
+                  <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary btn-action" id="btnSaveNotification">Save</button>
+                </div>
+              {{/with}}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

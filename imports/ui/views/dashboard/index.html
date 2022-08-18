@@ -1,0 +1,90 @@
+<template name="dashboard">
+  <section class="content-header">
+    <h5 class="mb-0">Dashboard</h5>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+  <section class="content" id="dashboardContent">
+    <div class="row">
+      <div class="col-xl-4 col-sm-6">
+        <div class="card">
+          <div class="">
+            <div class="order-icon-outer float-right">
+              <div class="order-icon-inner">
+                <i class="fa fa-bar-chart text-white"></i>
+              </div>
+            </div>
+            <div class="p-12">
+              <span class="fs-16 text-black">Today's Order</span>
+    					<h4 class="font-18 mt-1 mb-0 text-black">{{todaysOrder}}</h4>
+            </div>
+          </div>
+				</div>
+      </div>
+      <div class="col-xl-4 col-sm-6">
+        <div class="card">
+          <div class="">
+            <div class="order-icon-outer float-right">
+              <div class="order-icon-inner">
+                <i class="fa fa-bar-chart text-white"></i>
+              </div>
+            </div>
+            <div class="p-12">
+              <span class="fs-16 text-black">This Month Order</span>
+    					<h4 class="font-18 mt-1 mb-0 text-black">{{monthOrder}}</h4>
+            </div>
+          </div>
+				</div>
+      </div>
+      <div class="col-xl-4 col-sm-6">
+        <div class="card">
+          <div class="">
+            <div class="order-icon-outer float-right">
+              <div class="order-icon-inner">
+                <i class="fa fa-usd text-white"></i>
+              </div>
+            </div>
+            <div class="p-12">
+              <span class="fs-16 text-black">This Month Income</span>
+    					<h4 class="font-18 mt-1 mb-0 text-black">{{monthIncome}}</h4>
+            </div>
+          </div>
+				</div>
+      </div>
+      <div class="col-xl-4 col-sm-6">
+        <div class="card py-4" id="deliveryLimitBox">
+          <div class="">
+            <a class="edit-limit text-black float-right" href="#"><i class="fa fa-pencil"></i></a>
+            <span class="fs-16 text-black">Free Order Delivery Limit</span>
+            <h4 class="font-18 mt-1 mb-0 text-black text-limit-value">${{deliveryLimit}}</h4>
+          </div>
+          <div class="edit-delivery-linit-box pt-2">
+            <form class="d-flex" id="deliveryLimitForm">
+              <input type="number" value="{{deliveryLimit}}" class="form-control" id="txtDeliveryLimit" min="1">
+              <button type="submit" class="btn btn-sm btn-primary ml-2"><i class="fa fa-check"></i></button>
+              <button type="button" class="btn btn-sm ml-2 edit-limit"><i class="fa fa-times"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-6">
+        <div class="card py-4" id="deliveryChargeBox">
+          <div class="">
+            <a class="edit-charge text-black float-right" href="#"><i class="fa fa-pencil"></i></a>
+            <span class="fs-16 text-black">Delivery Charge</span>
+            <h4 class="font-18 mt-1 mb-0 text-black text-limit-value">${{deliveryCharge}}</h4>
+          </div>
+          <div class="edit-delivery-linit-box pt-2">
+            <form class="d-flex" id="deliveryChargeForm">
+              <input type="number" value="{{deliveryCharge}}" class="form-control" id="txtDeliveryCharge" min="1">
+              <button type="submit" class="btn btn-sm btn-primary ml-2"><i class="fa fa-check"></i></button>
+              <button type="button" class="btn btn-sm ml-2 edit-charge"><i class="fa fa-times"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

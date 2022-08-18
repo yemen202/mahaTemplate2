@@ -1,0 +1,23 @@
+<template name="header">
+  <header class="main-header">
+    <nav class="navbar navbar-expand-lg navbar-static-top p-0">
+      <a href="#" class="sidebar-toggle mr-auto" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <ul class="navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user d-inline-flex" aria-expanded="false">
+            <div class="user-img-wrapper float-left">
+              <img alt="image" src="/img/user.png" class="user-img">
+            </div>
+            <span class="user-name-text d-none d-md-block float-right">{{userName}}</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right position-absolute pullDown">
+            <span class="dropdown-menu-arrow"></span>
+            <a href class="dropdown-item has-icon text-danger" id="linkLogout"><i class="fa fa-sign-out"></i>Logout</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</template>

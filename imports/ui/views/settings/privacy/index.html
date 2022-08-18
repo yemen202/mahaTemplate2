@@ -1,0 +1,20 @@
+<template name="privacy">
+  <section class="content-header">
+    <h1>Privacy Policy</h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li class="active">Privacy Policy</li>
+    </ol>
+  </section>
+  <div class="content table-wrapper">
+    <div class="card">
+      <div class="card-header">
+        <button id="btnAddEditPrivacy" class="btn btn-primary action-button pull-right"><i class="fa {{#if isAdd }} fa-plus {{else}} fa-pencil {{/if}}"></i> {{#if isAdd }} Add {{else}} Edit {{/if}}</button>
+      </div>
+      <div class="card-body {{#if privacyPolicy }} p-3 {{/if}}">
+        {{ privacyPolicy }}
+      </div>
+    </div>
+  </div>
+  {{> privacyAddEditModal}}
+</template>

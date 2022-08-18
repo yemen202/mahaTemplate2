@@ -1,0 +1,225 @@
+<template name="productAddEdit">
+  <section class="content-header">
+    <h1>Products</h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li class="active">Products</li>
+    </ol>
+  </section>
+  <div class="content table-wrapper">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fa fa-pencil mr-2" aria-hidden="true"></i>{{title}}</span>
+        <div>
+          <button type="button" class="btn btn-default btn-cancel">Cancel</button>
+          <button type="submit" id="btnSaveProduct" class="btn btn-primary btn-action ml-2" form="productForm">Save</button>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">General</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="option-tab" data-toggle="tab" href="#option" role="tab" aria-controls="option" aria-selected="false">Option</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <!-- General tab -->
+          <div class="tab-pane mt-4 active" role="tabpanel" id="general" aria-labelledby="general-tab">
+            <div class="row">
+              <div class="col-md-12 col-lg-6">
+                <form role="form" id="productForm">
+                  {{#with product}}
+                    <div class="form-group">
+                      <label>Name</label>
+                      <span class="help"></span>
+                      <input type="text" name="name" class="form-control" placeholder="Name" value="{{name}}">
+                    </div>
+                    <div class="form-group">
+                      <label>Image</label>
+                      <span class="help-text">(Recommended size 250x250)</span>
+                      <input type="file" class="form-control" name="photo" id="productImage" value="" accept="image/*" />
+                      <div class="d-flex flex-wrap mt-3">
+                        {{#each photos}}
+                          <div class="mt-4 ml-2 mr-3 position-relative">
+                            <span class="pointer remove-image remove-icon-wrapper" data-value="{{@index}}"><i class="fa fa-times m-t-10"></i></span>
+                            <img width="70px" src={{this}} alt="Image" />
+                          </div>
+                        {{/each}}
+                        {{#each newImages}}
+                          <div class="mt-4 ml-2 mr-3 position-relative">
+                            <span class="pointer remove-new-image remove-icon-wrapper" data-value="{{@index}}"><i class="fa fa-times m-t-10"></i></span>
+                            <img width="70px" src={{this}} alt="Image" />
+                          </div>
+                        {{/each}}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Short description</label>
+                      <input type="text" name="shortDescription" class="form-control" placeholder="Short description" value="{{shortDescription}}">
+                    </div>
+                    <div class="form-group">
+                      <label>Description</label>
+                      <textarea name="description" id="productDescription" class="form-control mt-lg" rows="4" >{{description}}</textarea>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Price</label>
+                          <input type="number" name="price" class="form-control mb-4 mb-sm-0" placeholder="Price" value="{{price}}" min="0">
+                        </div>
+                        <div class="col-md-6">
+                          <label>Special Price</label>
+                          <input type="number" name="specialPrice" class="form-control" placeholder="Special Price" value="{{specialPrice}}" min="0">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Quantity</label>
+                          <input type="number" name="quantity" class="form-control mb-4 mb-sm-0" placeholder="Quantity" value="{{quantity}}" min="1">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Visible</label>
+                          <div>
+                            <label class="toggle-switch">
+                              <input type="checkbox" name="visible" checked="{{visible}}">
+                              <span class="toggle-slider sli-round"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group custom-checkbox custom-control ml-1">
+                      <input type="checkbox" class="custom-control-input" name="popular" id="productPopular" checked="{{popular}}" value="{{popular}}">
+                      <label for="productPopular" class="custom-control-label checkbox-label">Popular</label>
+                    </div>
+                  {{/with}}
+                </form>
+              </div>
+              <div class="col-md-12 col-lg-5">
+                <div class="form-group">
+                  <label>Categories</label>
+                  <div class="search-box-wrapper position-relative">
+                    <input type="text" id="categorySearch" class="form-control search-input" placeholder="Categories" autocomplete="off">
+                    <span class="category-search"><i class="fa fa-search"></i></span>
+                    {{#if $and categoryList.length showCategoriesMenu}}
+                      <div class="dropdown-menu category-menu d-block">
+                        {{#each categoryList}}
+                          <div class="dropdown-item category-item pointer">{{name}}</div>
+                        {{/each}}
+                      </div>
+                    {{/if}}
+                  </div>
+                  <div class="product-category">
+                    {{#each selectedCategories}}
+                      <div class="category-text"><i class="fa fa-minus-circle mr-2 pointer remove-category"></i>{{name}}</div>
+                    {{/each}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Similar Products</label>
+                  <div class="search-box-wrapper position-relative">
+                    <input type="text" id="productSearch" class="form-control search-input" placeholder="Similar Products" autocomplete="off">
+                    <span class="product-search"><i class="fa fa-search"></i></span>
+                    {{#if $and productList.length showSimilarProductsMenu}}
+                      <div class="dropdown-menu product-menu d-block">
+                        {{#each productList}}
+                          <div class="dropdown-item product pointer">{{name}}</div>
+                        {{/each}}
+                      </div>
+                    {{/if}}
+                  </div>
+                  <div class="similar-product">
+                    {{#each similarProducts}}
+                      <div class="product-text"><i class="fa fa-minus-circle mr-2 pointer remove-similar-product"></i>{{name}}</div>
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Option tab -->
+          <div class="tab-pane mb-4" role="tabpanel" id="option" aria-labelledby="option-tab">
+            <div class="mt-4">
+              <div class="row">
+                <div class="col-md-6 col-lg-2">
+                  <ul class="list-unstyled mt-option-list">
+                    {{#each selectedOptions}}
+                      <li class="option-item {{isActiveOption _id}}">
+                        <div class="select-option">
+                          <i class="fa fa-minus-circle pr-2 remove-option" data-id="{{@index}}"></i>{{name}}
+                        </div>
+                      </li>
+                    {{/each}}
+                  </ul>
+                  <select class="form-control rounded" id="optionSelect">
+                    <option value="" disabled selected>options</option>
+                    {{#each options}}
+                      <option value="{{_id}}" disabled="{{isDisbledOption _id}}">{{name}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                <div class="col-md-6 col-lg-10">
+                  {{#if displayTable }}
+                    <table class="table option-table">
+                      <thead>
+                        <tr>
+                          <th width="21%">Option Value</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                          <th>&nbsp;</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each activeOptionValues}}
+                          <tr>
+                            <td>
+                              <select class="form-control rounded value-id" name="optionValueId">
+                                <option value="" disabled selected>Option Value</option>
+                                {{#each activeSelectOptionValues}}
+                                  <option value="{{_id}}" selected="{{isSelectedOptionValue ../optionValueId }}" disabled="{{isDisbledOptionValue}}">{{value}}</option>
+                                {{/each}}
+                              </select>
+                            </td>
+                            <td>
+                              <input type="number" name="quantity" class="form-control rounded value-quantity" placeholder="Quantity" value="{{quantity}}" min="1">
+                            </td>
+                            <td>
+                              <select class="form-control rounded value-price-prefix" name="pricePrefix">
+                                <option value="plus" selected="{{isSelectPricePrefix 'plus'}}">+</option>
+                                <option value="minus" selected="{{isSelectPricePrefix 'minus'}}">-</option>
+                              </select>
+                              <input type="number" name="price" class="form-control mt-2 rounded value-price" placeholder="Price" value="{{price}}" min="0">
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-outline-danger btn-remove"><i class="fa fa-minus-circle"></i></button>
+                            </td>
+                          </tr>
+                        {{/each}}
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">
+                            <button class="btn btn-primary btn-add"><i class="fa fa-plus-circle"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
